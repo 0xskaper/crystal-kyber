@@ -31,7 +31,7 @@ void polynimial_decompress(poly *res, const uint8_t *a);
 void polynomial_toBytes(uint8_t *res, const poly *a);
 void polynomial_fromBytes(poly *res, const uint8_t *a);
 void polynomial_toMessage(uint8_t *res, const poly *a);
-void polynomial_fromMessage(poly *res, const uint8_t *a);
+void polynomial_fromMessage(poly *res, const uint8_t *message);
 
 // Miscellaneous
 void polynomial_reduce(poly *res);
