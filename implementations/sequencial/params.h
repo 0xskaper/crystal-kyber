@@ -1,6 +1,7 @@
 #ifndef PARAMS_H
 #define PARAMS_H
 
+#define SHAKE128_RATE 168
 #define KYBER_K 3
 #define KYBER_N 256
 #define KYBER_Q 3329
