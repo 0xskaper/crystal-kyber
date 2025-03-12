@@ -6,31 +6,29 @@
 #include <stdint.h>
 
 typedef struct {
-  poly vec[KYBER_N];
+  poly vec[KYBER_K];
 } polyvec;
 
 // Basic vector operations
-void polynomialVector_addition(polyvec *res, const polyvec *a,
-                               const polyvec *b);
-void polynomialVector_subtraction(polyvec *res, const polyvec *a,
-                                  const polyvec *b);
+void polyvec_add(polyvec *r, const polyvec *a, const polyvec *b);
+void polyvec_sub(polyvec *r, const polyvec *a, const polyvec *b);
 
 // NTT-related functions
-void polynomialVector_ntt(polyvec *res);
-void polynomial_invtt_tomont(polyvec *res);
+void polyvec_ntt(polyvec *r);
+void polyvec_invntt_tomont(polyvec *r);
 
 // Inner product
-void polynomialVector_pointwise_acc_montgomery(poly *res, const polyvec *a,
-                                               const polyvec *b);
+void polyvec_pointwise_acc_montgomery(poly *r, const polyvec *a,
+                                      const polyvec *b);
 
 // Compression and packing functions
-void polynomialVector_compress(uint8_t *res, const polyvec *a);
-void polynomialVector_decompress(polyvec *res, const uint8_t *a);
-void polynomialVector_toBytes(uint8_t *res, const polyvec *a);
-void polynomialVector_fromBytes(polyvec *res, const uint8_t *a);
+void polyvec_compress(uint8_t *r, const polyvec *a);
+void polyvec_decompress(polyvec *r, const uint8_t *a);
+void polyvec_tobytes(uint8_t *r, const polyvec *a);
+void polyvec_frombytes(polyvec *r, const uint8_t *a);
 
 // Miscellaneous
-void polynomialVector_reduce(polyvec *res);
-void polynomialVector_csubq(polyvec *res);
+void polyvec_reduce(polyvec *r);
+void polyvec_csubq(polyvec *r);
 
 #endif
