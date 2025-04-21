@@ -1,30 +1,20 @@
-CFLAGS = -Wall -Wextra -O3 -I.
+CC = gcc
+CFLAGS = -Wall -Wextra -O0 -g -I.
+TARGET = test_kyber
+OBJS = test_kyber.o kyber.o fips202.o poly.o polyvec.o ntt.o symmetric.o
 
-all: test_kyber
+.PHONY: all clean
 
-test_kyber: poly.o polyvec.o ntt.o fips202.o symmetric.o kyber.o test_kyber.o
-	gcc $(CFLAGS) -o test_kyber poly.o polyvec.o ntt.o fips202.o symmetric.o kyber.o test_kyber.o
+all: $(TARGET)
 
-poly.o: poly.c
-	gcc $(CFLAGS) -c poly.c -o poly.o
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
-polyvec.o: polyvec.c
-	gcc $(CFLAGS) -c polyvec.c -o polyvec.o
-
-ntt.o: ntt.c
-	gcc $(CFLAGS) -c ntt.c -o ntt.o
-
-fips202.o: fips202.c
-	gcc $(CFLAGS) -c fips202.c -o fips202.o
-
-symmetric.o: symmetric.c
-	gcc $(CFLAGS) -c symmetric.c -o symmetric.o
-
-kyber.o: kyber.c
-	gcc $(CFLAGS) -c kyber.c -o kyber.o
-
-test_kyber.o: test_kyber.c
-	gcc $(CFLAGS) -c test_kyber.c -o test_kyber.o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o test_kyber
+	rm -f $(TARGET) $(OBJS)
+
+run: $(TARGET)
+	./$(TARGET)
