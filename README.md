@@ -1,4 +1,6 @@
 # Kyber Post-Quantum Cryptography Implementation
+## Computational Mathematics Project
+### Submitted to Professor Curtis Bright, University of Windsor
 
 This repository contains an implementation of the Kyber post-quantum key encapsulation mechanism (KEM). Kyber is a lattice-based cryptographic algorithm selected by NIST as a standard for post-quantum cryptography.
 
